@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <style>
+        table,tr,td,th{
+            border: 1px solid black;
+            border-collapse: collapse;
+        }
+    </style>
+    <table id='1'>
+        <tr>
+            <th>No</th>
+            <th>Nama</th>
+            <th>Harga</th>  
+            <th>Stock</th> 
+            <th>Exp</th>         
+        </tr>
+    </table>
+
+</body>
+<script>
+class Items {
+        constructor(Nama, Harga, Stock, Inputs) {
+            this.Nama = Nama
+            this.Harga = Harga
+            this.Stock = Stock
+            this.Inputs = Inputs
+        }
+    }
+
+    class Buah extends Items {
+        constructor(Nama, Harga, Stock, Inputs, Expired) {
+            super(Nama, Harga, Stock, Inputs)
+            this.Expired = Expired
+        }
+    }
+
+    class Baju extends Items {
+        constructor(Nama, Harga, Stock, Inputs, Size) {
+            super(Nama, Harga, Stock, Inputs)
+            this.Size = Size
+        }
+    }
+
+    class Hp extends Items {
+        constructor(Nama, Harga, Stock, Inputs, Garansi) {
+            super(Nama, Harga, Stock, Inputs)
+            this.Garansi = Garansi
+        }
+    }
+
+    let tokoBuah = [
+        new Buah('Jeruk', 13000, 10, 0, ('2019-3-21')),
+        new Buah('Mangga', 7000, 15, 0, ('2020-1-20')),
+        new Buah('Apel', 13000, 5, 0, ('2020-3-4')),
+        new Buah('Semangka', 8000, 7, 0, ('2020-3-7'))
+    ]
+
+    let menuBuah = ''
+    for (i = 0; i < tokoBuah.length; i++) {
+            menuBuah += ('<tr>' + '<td>' + (i + 1) + '</td>' + '<td>' +'<strong>' + tokoBuah[i].Nama + '</strong>' + '</td>' +
+                '<td>' + '<i>' + tokoBuah[i].Harga + '</i>' +  '</td>' + 
+                '<td>' + tokoBuah[i].Stock + '</td>' + 
+                '<td> '+ tokoBuah[i].Expired + '<td>' +'</tr>')
+        }
+
+     document.getElementById('1').innerHTML += menuBuah
+        // <tr>
+        //     <td></td>
+        //     <td>tokoBuah[i].Nama</td>
+        //     <td>tokoBuah[i].Harga</td>
+        // </tr>
+
+    
+</script>
+</html>

@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+
+<script>
+
+let Hjeruk = 2000
+let Hleci = 3000
+let Hapel = 2500
+let Hmangga = 1500
+let Sjeruk = 10
+let Sleci = 5
+let Sapel = 6
+let Smangga = 4
+
+
+alert('Harga jeruk satu biji = Rp.' + Hjeruk + ' Stok sisa = ' + Sjeruk +
+      '\nHarga leci satu biji = Rp.' + Hleci + ' Stok sisa = ' + Sleci +
+      '\nHarga apel satu biji = Rp.' + Hapel + ' Stok sisa = ' + Sapel +
+      '\nHarga mangga satu biji = Rp.' + Hmangga + ' Stok sisa = ' + Smangga)
+
+let BeliJeruk = parseInt(prompt('Beli jeruk berapa biji ?'))
+    if(BeliJeruk > Sjeruk){
+        alert(' Jumlah Jeruk tidak mencukupi ')
+        alert('TERIMA KASIH, SILAHKAN ULANGIN KEMBALI')
+    }else{
+        let BeliLeci = parseInt(prompt('Beli leci berapa biji ?'))
+        if(BeliLeci > Sleci){
+            alert(' Jumlah Leci tidak mencukupi ')
+            alert('TERIMA KASIH, SILAHKAN ULANGIN KEMBALI')
+            }else{
+                let BeliApel = parseInt(prompt('Beli Apel berapa biji ?'))
+                if(BeliApel > Sapel){
+                alert(' Jumlah Apel tidak mencukupi ')
+                alert('TERIMA KASIH, SILAHKAN ULANGIN KEMBALI')
+                }else{
+                    let BeliMangga = parseInt(prompt('Beli Mangga berapa biji ? '))
+                    if(BeliMangga > Smangga){
+                        alert(' Jumlah Mangga tidak mencukupi')
+                        alert('TERIMA KASIH, SILAHKAN ULANGIN KEMBALI')
+                }else{       
+                        let totalHargaJ = parseInt(BeliJeruk)*Hjeruk
+                        let totalHargaL = parseInt(BeliLeci)*Hleci
+                        let totalHargaA = parseInt(BeliApel)*Hapel
+                        let totalHargaM = parseInt(BeliMangga)*Hmangga
+
+                        let total = parseInt(totalHargaJ) + parseInt(totalHargaL) + parseInt(totalHargaA) + parseInt(totalHargaM)
+                        alert('Harga total : Rp. ' + total  )
+
+                        let bayar = parseInt(prompt('Berapa duit yang anda bayar ?'))
+                            if(bayar == total ){
+                                alert('UANG ANDA PAS')
+                            }else if(bayar > total){
+                                let kembalian = bayar-total
+                                alert('Kembalian anda : Rp.' + kembalian)
+                            }else{
+                                let kurang = total-bayar
+                                alert('Duit anda kurang : Rp.' + kurang)
+                            }
+                            alert('TERIMA KASIH, SUDAH BERTRANSAKSI DISINI')
+                        }
+                    }      
+                }   
+            }   
+</script>
+</html>

@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <script>
+
+        let menu = ''
+        let desc = ''
+        let HargaTotal
+        let PilihBuah
+        let PilihBuahIndex
+        let InputJumlah
+        let isRepeat
+        let KondisiUtama
+
+        let arrData = [
+            { Nama: 'Jeruk', Harga: 10000, Stock: 10, Inputs: 0 },
+            { Nama: 'Mangga', Harga: 7000, Stock: 15, Inputs: 0 },
+            { Nama: 'Apel', Harga: 13000, Stock: 5, Inputs: 0 },
+            { Nama: 'Semangga', Harga: 5000, Stock: 7, Inputs: 0 }
+        ]
+
+        function add() {
+            let choose = prompt('1. Tambah Item \n 2. Back')
+            if (choose == 1) {
+                arrData.push({
+                    Nama: prompt('Masukan Nama Buah'),
+                    Stock: prompt('Masukan Jumlah Stock'),
+                    Harga: prompt('Masukan Harga Buah'),
+                    Inputs: 0
+                })
+            } else {
+                HalamanUtamaUser()
+            }
+        }
+        function TampilanMenuUser() {
+
+            menu = ''
+            for (i = 0; i < arrData.length; i++) {
+                menu += (i + 1 + '. Buah ' + arrData[i].Nama + '\n' +
+                    '    Harga = Rp.' + arrData[i].Harga + '\n' +
+                    '    Sisa stock  = ' + arrData[i].Stock + '\n\n')
+            }
+            menu += (arrData.length + 1) + '.Bayar\n'
+            menu += (arrData.length + 2) + '.Troll'
+            PilihBuah = prompt(menu)
+        }
+
+        function selectAdmin() {
+            do {
+                adminUser = prompt(`Login : \n\n 1. User \n 2. Admin`)
+
+                if (adminUser == 1) {
+                    HalamanUtamaUser()
+                    KondisiUtama = false
+
+                } else if (adminUser == 2) {
+                    add()
+                    KondisiUtama = true
+                }
+            } while (KondisiUtama)
+        }
+        function priceTotal() {
+
+            HargaTotal = 0
+
+            for (i = 0; i < arrData.length; i++) {
+
+                HargaTotal += arrData[i].Harga * arrData[i].Inputs
+            }
+            return HargaTotal
+
+        }
+
+        function adddesc(PilihBuahIndex) {
+
+            do {
+
+                InputJumlah = parseInt(prompt(`Berapa Banyak ${arrData[PilihBuahIndex].Nama} ?`))
+
+                if (arrData[PilihBuahIndex].Stock >= InputJumlah + arrData[PilihBuahIndex].Inputs) {
+                    arrData[PilihBuahIndex].Inputs += InputJumlah
+                    isRepeat = false
+                   // arrData[PilihBuahIndex].Stock -= parseInt(InputJumlah)
+
+
+                } else {
+                    alert(`stock ${arrData[PilihBuahIndex].Nama} melebihi batas !`)
+                    isRepeat = true
+                }
+
+            } while (isRepeat)
+
+            isRepeat = true
+
+
+        }
+
+        function showShoppingdesc() {
+
+            desc = ''
+            for (i = 0; i < arrData.length; i++) {
+                if (arrData[i].Inputs > 0) {
+                    desc += ('- ' + arrData[i].Nama + ' Sebanyak : ' + arrData[i].Inputs + ' dengan harga : ' + arrData[i].Harga * arrData[i].Inputs + '\n')
+                }
+            }
+            alert(desc)
+
+            isRepeat = true
+
+        }
+
+        function userInputsPrice() {
+
+            do {
+
+                userPayment = prompt(`Total Harga : ${HargaTotal}`)
+
+                if (userPayment > HargaTotal) {
+                    alert(`Kembalian ${userPayment - HargaTotal}`)
+                    isRepeat = false
+
+                } else if (userPayment < HargaTotal) {
+                    alert(`Duit anda kurang  ${HargaTotal - userPayment}`)
+                    isRepeat = true
+
+                } else if (userPayment == HargaTotal) {
+                    alert('Duit anda PAS!!')
+                    isRepeat = false
+                }
+
+            } while (isRepeat)
+
+            for (let i = 0; i < arrData.length; i++) {
+                arrData[i].Stock -= arrData[i].Inputs
+                arrData[i].Inputs = 0
+            }
+
+            isRepeat = confirm('Mau Beli lagi ?')
+
+        }
+
+        selectAdmin()
+
+        function HalamanUtamaUser() {
+
+            do {
+
+                TampilanMenuUser()
+
+                PilihBuahIndex = PilihBuah - 1
+
+
+                if (PilihBuah == arrData.length + 1) {
+
+                    showShoppingdesc()
+
+                    priceTotal()
+
+                    userInputsPrice()
+
+                } else if (PilihBuah == arrData.length + 2) {
+
+                    showShoppingdesc()
+
+                } else {
+
+                    adddesc(PilihBuahIndex)
+
+
+                }
+
+            } while (isRepeat)
+
+        }
+
+
+    </script>
+
+</body>
+
+</html>

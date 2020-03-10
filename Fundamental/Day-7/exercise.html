@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+// 1 array isinya Jakarta BSD Bandung
+// Buat sebuah function input sendiri menggunakan prompt 
+//  1. Item apa saja di dalam kota masing masing
+//  2.
+let arr = ['Jakarta','BSD','Bandung','Jogja']
+// let b
+// function hapus(input){
+//     for (let i = 0;i<arr.length; i++){
+//         if(arr[i].toLowerCase() == input.toLowerCase()){
+//             arr.splice(i,1)
+//         }
+//     }
+// }
+
+// function cek(input){
+//     for(let i = 0;i<arr.length;i++){
+//         if(arr[i].toLowerCase() == input.toLowerCase()){
+//         return true
+//         }
+//     }
+//     return false
+// }
+
+// let input = prompt(arr)
+// alert(cek(input))
+// // alert(arr)
+
+
+function repIndexOf (string){
+    for(let i = 0;i<arr.length;i++){
+        if(arr[i].toLowerCase() == input.toLowerCase()){
+            return i
+        }
+    }
+    alert -1
+}
+let input = prompt(arr)
+alert(repIndexOf(input))
+
+// function balik(input) { 
+  
+  
+//   const ArrayKosong = [];                      // <<--- Menggunakan Looping
+    
+//   for(let i = input.length-1; i >= 0; i--) {  
+//       ArrayKosong.push(input[i]); 
+//   } 
+//       return ArrayKosong.join(''); 
+
+// // return input.split('').reverse().join('') // <<--- Menggunakan Reverse() 
+// }
+
+
+// let input = prompt('Input Angka/Huruf yang akan di balik')
+// alert(balik(input))
+
+</script>
+</html>

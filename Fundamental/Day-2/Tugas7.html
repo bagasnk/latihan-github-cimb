@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+
+<script>
+
+
+var Input1 = parseFloat(prompt('Input berat badan (kg)'))
+var Input2 = parseFloat(prompt('Input tinggi badan (m)'))
+pangkat = Math.pow(Input2,2)
+let IMT = Input1/pangkat
+if(IMT >= 40){
+    alert('Obesitas ' +IMT)
+}else if(IMT >= 30){
+    alert('BB Sangat berlebihan '+ IMT)
+}else if(IMT >= 25){
+    alert('BB Berlebih '+ IMT)
+}else if(IMT >= 18.5){
+    alert('Ideal ' + IMT)
+}else{
+    alert('BB Kurang ' +IMT)
+}
+
+</script>
+</html>

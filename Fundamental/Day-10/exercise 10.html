@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <style>
+        table,
+        tr,
+        td,
+        th {
+            border: 1px solid black;
+            border-collapse: collapse;
+            text-align: center;
+        }
+    </style>
+    <center>
+        <table>
+            <thead>
+                <tr>
+                    <th id onclick='sortDataNama()'>Nama</th>
+                    <th id onclick='sortDataPekerjaan()'>Pekerjaan</th>
+                    <th id onclick='sortDataUmur()'>Umur</th>
+                    <th>Picture</th>
+                </tr>
+            </thead>
+
+            <tbody id='mainData'></tbody>
+            <h3 align='center' id='showDataKosong'></h3>
+            <tfoot>
+                <tr>
+                    <td><input id='inputNama' type="text" size=25 name="nama" placeholder="Input Nama"></td>
+                    <td><input id='inputPekerjaan' type="text" size=25 name="pekerjaan" placeholder="Input Pekerjaan">
+                    </td>
+                    <td><input id='inputUmur' type="number" size=25 name="umur" placeholder="Umur"></td>
+                    <td><input id='inputPic' type="text" size=25 name="pic" placeholder="Link"></td>
+                    <td><input id='sumButton' type="button" onclick='addData()' value="Sumbit"></td>
+                </tr>
+            </tfoot>
+        </table>
+        <h3 align ='center' id='showInputKosong'></h3>
+    </center>
+</body>
+
+
+
+
+<script>
+    class Orang {
+        constructor(nama, pekerjaan, umur, pic) {
+            this.nama = nama
+            this.pekerjaan = pekerjaan
+            this.umur = umur
+            this.pic = pic
+        }
+    }
+
+    let dataOrang = [
+        new Orang('Bagas', 'Kuliah', 21, 'https://cdn2.tstatic.net/style/foto/bank/images/justin-timberlake_20180119_163334.jpg'),
+        new Orang('Cepe', 'Pedagang', 25, 'https://images.solopos.com/2013/01/raffi-ahmad.jpg '),
+        new Orang('Ajinomoto', 'Sekolah', 20, 'https://cdn2.tstatic.net/palembang/foto/bank/images/al-ghazali_20180212_092208.jpg')
+    ]
+
+    const renderData = () => {
+        let hasil = ''
+        dataOrang.forEach(({ nama, pekerjaan, umur, pic }, index) => {
+            hasil += `
+        <tr>
+            <td>${nama}</td>
+            <td>${pekerjaan}</td>
+            <td>${umur}</td>
+            <td><img src= ${pic} width='100px'></td>
+            <td><input id='delButton' type="button" onclick='delData(${index})' value="Delete"></td>
+        </tr>`
+        })
+
+        document.getElementById('mainData').innerHTML = hasil
+    }
+    renderData()
+
+    const addData = () => {
+        let inputNama = document.getElementById('inputNama').value
+        let inputPekerjaan = document.getElementById('inputPekerjaan').value
+        let inputUmur = document.getElementById('inputUmur').value
+        let inputPic = document.getElementById('inputPic').value
+        let newData = new Orang(inputNama, inputPekerjaan, inputUmur, inputPic)
+        if (inputNama && inputPekerjaan && inputUmur && inputPic !== '') {
+            dataOrang.push(newData)
+            renderData()
+            inputNama = document.getElementById('inputNama').value = ''
+            inputPekerjaan = document.getElementById('inputPekerjaan').value = ''
+            inputUmur = document.getElementById('inputUmur').value = ''
+            inputPic = document.getElementById('inputPic').value = ''
+            document.getElementById('showDataKosong').innerHTML = ''
+            document.getElementById('showInputKosong').innerHTML = ''
+
+            alert('Data sudah di tambah')
+
+        } else {
+            document.getElementById('showInputKosong').innerHTML = 'Inputan tidak boleh kosong'
+            inputNama = document.getElementById('inputNama').value = ''
+            inputPekerjaan = document.getElementById('inputPekerjaan').value = ''
+            inputUmur = document.getElementById('inputUmur').value = ''
+            inputPic = document.getElementById('inputPic').value = ''
+
+
+        }
+    }
+
+    const delData = (deleteIndex) => {
+        dataOrang.splice(deleteIndex, 1)
+        renderData()
+        document.getElementById('showInputKosong').innerHTML = ''
+        alert('Data berhasil di hapus')
+        if (dataOrang.length == 0) {
+            document.getElementById('showDataKosong').innerHTML = 'Data Kosong'
+            document.getElementById('showInputKosong').innerHTML = ''
+
+        }
+    }
+    let condNama = 0
+    const sortDataNama = () => {
+        if (condNama == 0) {
+            dataOrang.sort(function sort(a, b) {
+                if (a.nama.toLowerCase() < b.nama.toLowerCase()) {
+                    return -1
+                }
+                return 1
+
+            })
+            condNama++
+        } else {
+            dataOrang.sort(function sort(b, a) {
+                if (a.nama.toLowerCase() < b.nama.toLowerCase()) {
+                    return -1
+                }
+                return 1
+
+            })
+            condNama--
+        }
+        renderData()
+
+    }
+    let condPekerjaan = 0
+    const sortDataPekerjaan = () => {
+        if (condPekerjaan == 0) {
+            dataOrang.sort(function sort(a, b) {
+                if (a.pekerjaan.toLowerCase() < b.pekerjaan.toLowerCase()) {
+                    return -1
+                }
+                return 1
+
+            })
+            condPekerjaan++
+        } else {
+            dataOrang.sort(function sort(b, a) {
+                if (a.pekerjaan.toLowerCase() < b.pekerjaan.toLowerCase()) {
+                    return -1
+                }
+                return 1
+
+            })
+            condPekerjaan--
+        }
+        renderData()
+
+    }
+    let condUmur = 0
+    const sortDataUmur = () => {
+        if (condUmur == 0) {
+            dataOrang.sort(function sort(a, b) {
+                if (a.umur < b.umur) {
+                    return -1
+                }
+                return 1
+
+            })
+            condUmur++
+        } else {
+            dataOrang.sort(function sort(b, a) {
+                if (a.umur < b.umur) {
+                    return -1
+                }
+                return 1
+
+            })
+            condUmur--
+        }
+        renderData()
+
+    }
+
+
+</script>
+
+</html>
