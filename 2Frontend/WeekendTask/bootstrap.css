@@ -10230,37 +10230,41 @@ a.text-dark:hover, a.text-dark:focus {
   padding: 8rem 0;
 }
 
-header.masthead {
+header.pemandangan {
   background: url("bg-bground.jpg");
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
 }
-header.masthead h1 {
+header.pemandangan h1 {
   font-size: 2.25rem;
 }
 @media (min-width: 992px) {
-  header.masthead {
+  header.pemandangan {
     height: 100vh;
     min-height: 40rem;
     padding-top: 4.5rem;
     padding-bottom: 0;
   }
-  header.masthead p {
+  header.pemandangan p {
     font-size: 1.15rem;
   }
-  header.masthead h1 {
+  header.pemandangan h1 {
     font-size: 3rem;
   }
 }
 @media (min-width: 1200px) {
-  header.masthead h1 {
+  header.pemandangan h1 {
     font-size: 3.5rem;
   }
 }
 
 .text-white-75 {
   color: rgba(255, 255, 255, 0.75);
+}
+
+html {
+  scroll-behavior: smooth;
 }
 
 
