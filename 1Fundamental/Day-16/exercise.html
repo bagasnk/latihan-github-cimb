@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang='en'>
+
+<head>
+    <meta charset='UTF-8'>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+    <title>Document</title>
+</head>
+
+<body>
+    <style>
+        fieldset {
+            border: 1px solid black;
+            width: 150px;
+            margin: 0 auto;
+            text-align: left;
+            background-color: lavenderblush;
+        }
+    </style>
+    <fieldset>
+        <center>
+            <title>Stopwatch</title>
+            <input type='button' id='start' value='START' onclick='start()'>
+            <input type='button' id='stop' value='STOP' onclick='stop()'></br>
+            <input type='button' id='lap' value='LAP' onclick='lap()'>
+            <input type='button' id='reset' value='RESET' onclick='reset()'></br>
+        </center>
+    </fieldset></br>
+    <center>
+        <h1>
+            <span id='hour'></span>
+            <span id='min'></span>
+            <span id='sec'></span>
+            <span id='milisec'></span>
+        </h1>
+        <span id='lapTimer'></span>
+    </center>
+</body>
+<script>
+
+    let x
+    let startTimer = 0
+    const start = () => {
+        startTimer = startTimer + 1
+        if (startTimer === 1) {
+            x = setInterval(timer, 10)
+            document.getElementById('start').innerHTML = 'Stop'
+        } else if (startTimer === 2) {
+            document.getElementById('start').innerHTML = 'Start'
+            startTimer = 0
+            stop()
+        }
+    }
+
+    const stop = () => {
+        clearInterval(x)
+    }
+
+    let milisec = 0, miliSecOut = 0
+    let sec = 0, secOut = 0
+    let min = 0, minOut = 0
+    let hour = 0, hourOut = 0
+
+    const timer = () => {
+
+        miliSecOut = checkTime(milisec)
+        secOut = checkTime(sec)
+        minOut = checkTime(min)
+        hourOut = checkTime(hour)
+
+        milisec = ++milisec
+
+        if (milisec === 100) {
+            milisec = 0
+            sec = ++sec
+        }
+
+        if (sec == 60) {
+            min = ++min
+            sec = 0
+        }
+
+        if (min == 60) {
+            min = 0
+            hour = ++hour
+        }
+
+        document.getElementById('milisec').innerHTML = miliSecOut
+        document.getElementById('sec').innerHTML = secOut + ' : '
+        document.getElementById('min').innerHTML = minOut + ' : '
+        document.getElementById('hour').innerHTML = hourOut + ' : '
+
+    }
+    const checkTime = (i) => {
+        if (i < 10) {
+            i = '0' + i
+        }
+        return i
+    }
+    const reset = () => {
+        milisec = 0
+        sec = 0
+        min = 0
+        hour = 0
+        document.getElementById('milisec').innerHTML = '00'
+        document.getElementById('sec').innerHTML = '00 : '
+        document.getElementById('min').innerHTML = '00 : '
+        document.getElementById('hour').innerHTML = '00 : '
+        document.getElementById('lapTimer').innerHTML = ''
+    }
+    let i = 1
+
+    const lap = () => {
+        arrLapTimer = 'Lap  ' + i + ' = ' + (hourOut) + ' : ' + (minOut) + ' : ' + (secOut) + ' : ' + (miliSecOut) + '</br>'
+        i++
+        document.getElementById('lapTimer').innerHTML += arrLapTimer
+    }
+
+</script>
+
+</html>

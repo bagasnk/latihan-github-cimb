@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <b>
+        <div style="font-size: 50px;">Drawing tools</div>
+        <div> 1. Persegi</div>
+        <div> 2. Segitiga Siku2 Rata Kanan</div>
+        <div> 3. Segitiga Siku2 Rata Kiri</div>
+    </b><br>
+    <div>Jenis Bangunan :</div>
+    <input type='number' name='jenisBangunan' id='jBangunan'></input>
+    <div>Ukuran :</div>
+    <input type='number' name='ukuranBangunan' id='uBangunan'></input><br>
+    <input id='inputButton' type="button" onclick='prosesBangunan()' value="Lihat">
+    <div id='hasil'></div>
+</body>
+<script>
+
+    const Persegi = () => {
+        let ukuranB = document.getElementById('uBangunan').value
+        let result = ''
+        var i, j
+        for (i = 0; i < ukuranB; i++) {
+            for (j = 0; j < ukuranB; j++) {
+                result += '*'
+            }
+            result += '<br>'
+        }
+        document.getElementById('hasil').innerHTML = result
+    }
+
+
+    const SegitigaKanan = () => {
+        let ukuranB = document.getElementById('uBangunan').value
+        let result = ''
+        for (let i = ukuranB; i > 0; i--) {
+            for (let j = 0; j <= ukuranB; j++) {
+                if (j >= i) {
+                    result += '*'
+                } else {
+                    result += `&nbsp `
+                }
+            }
+            result += '<br>'
+        }
+        document.getElementById('hasil').innerHTML = result
+    }
+
+    const SegitigaKiri = () => {
+        let ukuranB = document.getElementById('uBangunan').value
+        let result = ''
+        var i, j
+        for (i = 0; i < ukuranB; i++) {
+            result += '*'
+            for (j = 0; j < ukuranB; j++) {
+                if (j == i) {
+                    break
+                }
+                result += '*'
+            }
+            result += '<br>'
+        }
+
+        document.getElementById('hasil').innerHTML = result
+    }
+
+    const prosesBangunan = () => {
+        let jenisB = document.getElementById('jBangunan').value
+        if (jenisB == 1) {
+            Persegi()
+            jenisB = document.getElementById('jBangunan').value = ''
+            ukuranB = document.getElementById('uBangunan').value = ''
+        } else if (jenisB == 2) {
+            SegitigaKanan()
+            jenisB = document.getElementById('jBangunan').value = ''
+            ukuranB = document.getElementById('uBangunan').value = ''
+        } else if (jenisB == 3) {
+            SegitigaKiri()
+            jenisB = document.getElementById('jBangunan').value = ''
+            ukuranB = document.getElementById('uBangunan').value = ''
+        } else {
+            alert('Masukan jenis bangunan !!!!!')
+            jenisB = document.getElementById('jBangunan').value = ''
+            ukuranB = document.getElementById('uBangunan').value = ''
+        }
+    }
+
+</script>
+
+</html>

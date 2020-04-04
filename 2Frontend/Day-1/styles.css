@@ -1,0 +1,79 @@
+table,
+        tr,
+        td {
+            border: 1px solid black;
+            border-collapse: collapse;
+
+        }
+
+        thead {
+            color: red;
+        }
+
+        .text-green {
+            color: green;
+        }
+
+        .text-gray {
+            color: grey;
+        }
+
+        .text-blue {
+            color: blue;
+        }
+
+        .text-yellow {
+            color: yellow;
+        }
+
+        .container {
+            border: 1px solid red;
+            margin-top: 10px;
+            padding: 8px;
+            width: 30%
+        }
+
+        #jeff {
+            color: red
+        }
+
+        .rounded {
+            border-radius: 50px;
+        }
+
+        .btn {
+            padding: 8px;
+            border-radius: 8px;
+            color: white;
+            border: 0px;
+        }
+
+        .btn:hover{
+            color: black;
+            cursor: pointer;
+            background-color: white;
+            transition:all 0.3s ease-in-out;
+            
+
+
+        }
+
+        .btn-pill {
+            border-radius: 16px;
+        }
+
+        .btn-red{
+            background-color: red;
+            border: 1px solid red;
+            
+        }
+
+        .btn-black{
+            background-color: black;
+            border: 1px solid black;
+        }
+
+        .btn-blue{
+            background-color: blue;
+            border: 1px solid blue;
+        }

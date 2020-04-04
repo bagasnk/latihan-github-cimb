@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+    let temp
+    let arrayHasil = []
+    for (let i = 0; i < 100; i++) {
+        let inputUser = prompt('Input user : ')
+        intInput = parseInt(inputUser)
+        if (!isNaN(intInput)) {
+            arrayHasil.push(intInput)
+        } else {
+            break;
+        }
+    }
+
+    for (let i = 0; i < arrayHasil.length; i++) {
+        for (let j = 0; j < arrayHasil.length; j++) {
+            if (arrayHasil[i] < arrayHasil[j]) {
+                temp = arrayHasil[i]
+                arrayHasil[i] = arrayHasil[j]
+                arrayHasil[j] = temp
+            }
+        }
+    }
+    console.log(arrayHasil)
+
+
+    let max = Number.MIN_VALUE
+    let min = Number.MAX_VALUE
+    for (let i = 0; i < arrayHasil.length; i++) {
+        if (max < arrayHasil[i]) {
+            max = arrayHasil[i]
+        }
+        if (min > arrayHasil[i]) {
+            min = arrayHasil[i]
+        }
+    }
+    console.log('Nilai tertinggi = ' + max +'\n'+ 'Nilai terendah = ' + min)
+    
+</script>
+
+</html>

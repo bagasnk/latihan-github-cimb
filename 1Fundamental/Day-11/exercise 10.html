@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <style>
+        table,
+        tr,
+        td,
+        th {
+            border: 1px solid black;
+            border-collapse: collapse;
+            text-align: center;
+        }
+    </style>
+    <center>
+        <table>
+            <thead>
+                <tr>
+                    <th id onclick='sortDataNama()'>Nama</th>
+                    <th id onclick='sortDataPekerjaan()'>Pekerjaan</th>
+                    <th id onclick='sortDataUmur()'>Umur</th>
+                    <th>Picture</th>
+                    <th id onclick='sortDataGender()'>Gender</th>
+                    <th>Biodata</th>
+                </tr>
+            </thead>
+
+            <tbody id='mainData'></tbody>
+            <h3 align='center' id='showDataKosong'></h3>
+            <tfoot>
+                <tr>
+                    <td><input id='inputNama' type="text" size=25 name="nama" placeholder="Input Nama"></td>
+                    <td><input id='inputPekerjaan' type="text" size=25 name="pekerjaan" placeholder="Input Pekerjaan">
+                    </td>
+                    <td><input id='inputUmur' type="number" size=25 name="umur" placeholder="Umur"></td>
+                    <td><input id='inputPic' type="text" size=25 name="pic" placeholder="Link"></td>
+                    <td>`
+                        <input type="radio" id="inputMale" name="gender" value="Male"><label for="male">Male</label>
+                        <input type="radio" id="inputFemale" name="gender" value="Female"><label for="female">Female</label>
+                    </td>
+                    <td><textarea name="desc" id="inputDesc" cols="30" rows="2" onkeyup="onChangeDescInput()" placeholder="Ketik disini ..."></textarea><br>
+                        <span id="wordCount">0/30</span></td>
+                    <td><input id='sumButton' type="button" onclick='addData()' value="Sumbit"></td>
+
+                </tr>
+            </tfoot>
+        </table>
+        <h3 align='center' id='showInputKosong'></h3>
+    </center>
+</body>
+
+<script>
+    
+    class Orang {
+        constructor(nama, pekerjaan, umur, pic, gender, desc) {
+            this.nama = nama
+            this.pekerjaan = pekerjaan
+            this.umur = umur
+            this.pic = pic
+            this.gender = gender
+            this.desc = desc
+        }
+    }
+
+    let dataOrang = [
+        new Orang('Bagas', 'Kuliah', 21, 'https://cdn2.tstatic.net/style/foto/bank/images/justin-timberlake_20180119_163334.jpg', 'Male', 'tidak apa apa saya bingung'),
+        new Orang('Cepe', 'Pedagang', 25, 'https://virginradiojakarta.com/wp-content/uploads/2019/05/ariana-grande-1.jpg', 'Female', ' alah mak saya saya sayaa'),
+        new Orang('Ajinomoto', 'Sekolah', 20, 'https://cdn2.tstatic.net/palembang/foto/bank/images/al-ghazali_20180212_092208.jpg', 'Male', ' dear diary saya saya kamu kamu')
+    ]
+
+    const renderData = () => {
+        let hasil = ''
+        dataOrang.forEach(({ nama, pekerjaan, umur, pic, gender, desc }, index) => {
+            if(desc.length > 30){
+                desc = desc.slice(0,30) +'...'
+            }
+            hasil += `
+        <tr>
+            <td>${nama}</td>
+            <td>${pekerjaan}</td>
+            <td>${umur}</td>
+            <td><img src= ${pic} width='100px'></td>
+            <td>${gender}</td>
+            <td>${desc}</td>
+            <td><input id='delButton' type="button" onclick='delData(${index})' value="Delete"></td>
+        </tr>`
+        })
+
+        document.getElementById('mainData').innerHTML = hasil
+    }
+    renderData()
+
+    const addData = () => {
+        let inputNama = document.getElementById('inputNama').value
+        let inputPekerjaan = document.getElementById('inputPekerjaan').value
+        let inputUmur = document.getElementById('inputUmur').value
+        let inputPic = document.getElementById('inputPic').value
+        let inputMale = document.getElementById('inputMale').checked
+        let inputFemale = document.getElementById('inputFemale').checked
+        let inputGender
+        if (inputMale) {
+            inputGender = document.getElementById('inputMale').value
+        } else if (inputFemale) {
+            inputGender = document.getElementById('inputFemale').value
+        }
+        let inputDesc = document.getElementById('inputDesc').value
+        let newData = new Orang(inputNama, inputPekerjaan, inputUmur, inputPic, inputGender, inputDesc)
+        if (inputNama && inputPekerjaan && inputUmur && inputPic &&  inputDesc !== '') {
+            dataOrang.push(newData)
+            renderData()
+            inputNama = document.getElementById('inputNama').value = ''
+            inputPekerjaan = document.getElementById('inputPekerjaan').value = ''
+            inputUmur = document.getElementById('inputUmur').value = ''
+            inputPic = document.getElementById('inputPic').value = ''
+            inputDesc = document.getElementById('inputDesc').value = ''
+            document.getElementById('showDataKosong').innerHTML = ''
+            document.getElementById('showInputKosong').innerHTML = ''
+            document.getElementById('wordCount').innerHTML = '0' + '/30'
+            alert('Data sudah di tambah')
+
+        } else {
+            document.getElementById('showInputKosong').innerHTML = 'Inputan tidak boleh kosong'
+            inputNama = document.getElementById('inputNama').value = ''
+            inputPekerjaan = document.getElementById('inputPekerjaan').value = ''
+            inputUmur = document.getElementById('inputUmur').value = ''
+            inputPic = document.getElementById('inputPic').value = ''
+            inputDesc = document.getElementById('inputDesc').value = ''
+            document.getElementById('wordCount').innerHTML = '0' + '/30'
+            
+        }
+    }
+
+    const delData = (deleteIndex) => {
+        dataOrang.splice(deleteIndex, 1)
+        renderData()
+        document.getElementById('showInputKosong').innerHTML = ''
+        alert('Data berhasil di hapus')
+        if (dataOrang.length == 0) {
+            document.getElementById('showDataKosong').innerHTML = 'Data Kosong'
+            document.getElementById('showInputKosong').innerHTML = ''
+
+        }
+    }
+    let condNama = 0
+    const sortDataNama = () => {
+        if (condNama == 0) {
+            dataOrang.sort(function sort(a, b) {
+                if (a.nama.toLowerCase() < b.nama.toLowerCase()) {
+                    return -1
+                }
+                return 1
+
+            })
+            condNama++
+        } else {
+            dataOrang.sort(function sort(b, a) {
+                if (a.nama.toLowerCase() < b.nama.toLowerCase()) {
+                    return -1
+                }
+                return 1
+
+            })
+            condNama--
+        }
+        renderData()
+
+    }
+    let condPekerjaan = 0
+    const sortDataPekerjaan = () => {
+        if (condPekerjaan == 0) {
+            dataOrang.sort(function sort(a, b) {
+                if (a.pekerjaan.toLowerCase() < b.pekerjaan.toLowerCase()) {
+                    return -1
+                }
+                return 1
+
+            })
+            condPekerjaan++
+        } else {
+            dataOrang.sort(function sort(b, a) {
+                if (a.pekerjaan.toLowerCase() < b.pekerjaan.toLowerCase()) {
+                    return -1
+                }
+                return 1
+
+            })
+            condPekerjaan--
+        }
+        renderData()
+
+    }
+    let condUmur = 0
+    const sortDataUmur = () => {
+        if (condUmur == 0) {
+            dataOrang.sort(function sort(a, b) {
+                if (a.umur < b.umur) {
+                    return -1
+                }
+                return 1
+
+            })
+            condUmur++
+        } else {
+            dataOrang.sort(function sort(b, a) {
+                if (a.umur < b.umur) {
+                    return -1
+                }
+                return 1
+
+            })
+            condUmur--
+        }
+        renderData()
+
+    }
+
+    let condGender = 0
+    const sortDataGender = () => {
+        if (condGender == 0) {
+            dataOrang.sort(function sort(a, b) {
+                if (a.gender < b.gender) {
+                    return -1
+                }
+                return 1
+
+            })
+            condGender++
+        } else {
+            dataOrang.sort(function sort(b, a) {
+                if (a.gender < b.gender) {
+                    return -1
+                }
+                return 1
+
+            })
+            condGender--
+        }
+        renderData()
+    }
+
+    const onChangeDescInput = () => {
+        document.getElementById('wordCount').innerHTML = inputDesc.value.length + '/30'
+    }
+    renderData()
+
+    // document.getElementById('inputDesc').onkeyup = function () {
+    // document.getElementById('wordCount').innerHTML = (this.value.length) + '/30'
+    // }
+
+    
+
+
+    
+    
+
+
+
+</script>
+
+</html>

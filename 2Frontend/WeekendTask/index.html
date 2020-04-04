@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://use.fontawesome.com/releases/v5.12.1/js/all.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Merriweather+Sans:400,700" />
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css?family=Merriweather:400,300,300italic,400italic,700,700italic"
+        type="text/css" />
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/magnific-popup.min.css" />
+    <link rel='stylesheet' href='./bootstrap.css'>
+    <title>Document</title>
+</head>
+
+
+<body id="page-top">
+    <nav class="navbar navbar-expand-lg navbar-light fixed-top py-3 bg-dark" id="mainNav">
+        <div class="container">
+            <a class="navbar-brand text-white" href="#page-top">Bagas Yafitra Pandji</a>
+            <ul class="navbar-nav ml-auto my-2 my-lg-0">
+                <li class="nav-item"><a class="nav-link text-white" href="#aboutMe">About Me</a></li>
+                <li class="nav-item"><a class="nav-link text-white" href="#personalInfo">Personal Info</a>
+                </li>
+                <li class="nav-item"><a class="nav-link text-white" href="#contact">Contact</a></li>
+            </ul>
+        </div>
+        </div>
+    </nav>
+
+
+
+    <header class="masthead">
+        <div class="container h-100">
+            <div class="row h-75 align-items-center justify-content-center text-center">
+                <div class="col-lg-10 align-self-end">
+                    <h1 class="text-uppercase text-white font-weight-bold">Selamat Datang</h1>
+                    <hr class="divider light my-4" />
+                </div>
+                <div class="col-lg-8 align-self-baseline">
+                    <p class="text-white-75 font-weight-light mb-1">"Ketika kamu bekerja, bekerjalah. Ketika kamu
+                        bermain, bermainlah. Jangan mencampuradukkan keduanya." - Jim Rohn</p>
+                </div>
+            </div>
+        </div>
+    </header>
+
+
+    <section class="page-section bg-info" id="aboutMe">
+
+        <div class="row justify-content-center" style='height: 350px;'>
+            <div class="col-lg-8 text-center">
+                <h2 class="text-white mt-0">About Me !</h2>
+                <hr class="divider light my-4" />
+                <p class="text-white-50 mb-4">Saya saat ini sedang berkerja di IT Developer Program - CIMB Niaga dan
+                    saat ini sedang pelatihan di Purwadika Coding School</p>
+            </div>
+        </div>
+        </div>
+    </section>
+
+
+    <section class='page-section bg-light' id="personalInfo">
+        <div class="container">
+            <div class="text-center mt-0 h6 bg-light">
+                <h2 class="title1" id='textChange'>Nama saya Bagas Yafitra Pandji dan saat ini berusia 22 tahun</h2>
+            </div>
+            <hr class="divider my-10" />
+            <div class="row">
+                <div class="col-lg-4 col-md-6 text-center">
+                    <div class="mt-5" onmouseover="tulisanBerubahPersonal()" onmouseout="tulisanSemula()">
+                        <i id='hoverPersonal' class="fas fa-2x fa-male text-dark mb-1"></i>
+                        <h3 class="h6 mb-2">Personal</h3>
+                        <p class="text-muted mb-0"></p>
+                    </div>
+
+                </div>
+                <div class="col-lg-4 col-md-6 text-center">
+                    <div class="mt-5" onmouseover="tulisanBerubahPendidikan()" onmouseout="tulisanSemula()">
+                        <i class="fas fa-2x fa-graduation-cap text-dark mb-1"></i>
+                        <h3 class="h6 mb-2">Pendidikan</h3>
+                        <p class="text-muted mb-0"></p>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 text-center">
+                    <div class="mt-5" onmouseover="tulisanBerubahJurnal()" onmouseout="tulisanSemula()">
+                        <i class="fas fa-2x fa-book-open text-dark mb-1"></i>
+                        <h3 class="h6 mb-2">Jurnal saya</h3>
+                        <p class="text-muted mb-0"></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="page-section" id="contact">
+        <div class="container">
+            <footer class="bg-light py-5">
+                <div class="row justify-content-center">
+                    <div class="col-lg-8 text-center">
+                        <h2 class="mt-0">Contact</h2>
+                        <hr class="divider my-4" />
+                    </div>
+                </div>
+                <div class="row ">
+                    <div class="col-lg-4 ml-auto text-center mb-5 mb-lg-0">
+                        <i class="fas fa-phone fa-3x mb-3 text-muted"></i>
+                        <div>(+62)822-1613-0343</div>
+                    </div>
+                    <div class="col-lg-4 mr-auto text-center">
+                        <i class="fas fa-envelope fa-3x mb-3 text-muted"></i>
+                        <a class="d-block" href="mailto:bagasyafitrapandji.nk@gmail.com">bagasyafitrapandji.nk@gmail.com</a>
+                    </div>
+
+                    <div class="col-lg-4 mr-auto text-center">
+                        <i class="fab fa-instagram-square fa-3x mb-3 text-muted"></i>
+                        <a class="d-block" href="https://www.instagram.com/bagasftra">@bagasftra</a>
+                    </div>
+                </div>
+            </footer>
+        </div>
+    </section>
+
+
+</body>
+<script>
+
+    const tulisanBerubahPersonal = () => {
+        let hvr = 'ini Personal'
+        document.getElementById('textChange').innerHTML = hvr
+    }
+
+    const tulisanBerubahPendidikan = () => {
+        let hvr = 'ini Pendidikan'
+        document.getElementById('textChange').innerHTML = hvr
+    }
+
+    const tulisanBerubahJurnal = () => {
+        let hvr = 'ini Jurnal Saya'
+        document.getElementById('textChange').innerHTML = hvr
+    }
+
+    const tulisanSemula = () => {
+        document.getElementById('textChange').innerHTML = 'Nama saya Bagas Yafitra Pandji dan saat ini berusia 22 tahun'
+    }
+    
+
+</script>
+
+</html>

@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel='stylesheet' href='./styles.css'>
+    <script src="https://use.fontawesome.com/releases/v5.12.1/js/all.js" crossorigin="anonymous"></script>
+    <title>Document</title>
+</head>
+
+<body>
+
+
+    <!-- navbar boottom -->
+    <div class="navbar">
+        <div class="container-space-between">
+            <a href='https://www.gmail.com' class="navbar-item">Gmail</a>
+            <a href='https://www.google.co.id/imghp?hl=id&tab=wi&authuser=0&ogbl' class="navbar-item">Gambar</a>
+            <a href=''><i class="fas fa-th navbar-item"></i></a>
+            <a href=''><i class="far fa-user-circle navbar-item"></i></i></a>
+        </div>
+    </div>
+
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+
+     <!--google gambar-->
+
+     <div class="container-height">
+        <img src='https://pngimg.com/uploads/google/google_PNG19644.png' alt='' class='google-image' />
+    </div>
+
+    <br>
+
+    <!-- button  -->
+
+    <div class='input-icon container-height'>
+        <i class="fas fa-search"></i>&nbsp;
+        <input type='text' id='searchGoogle' size='75px' class='my-Input' />
+    </div>
+    <br>
+    <div class='container-height' >
+        <input type='button' onclick='search()' class='my-btn' value='Google Search'> &nbsp;&nbsp;
+        <input type='button' onclick='BeruntungGoogle() 'class='my-btn' value='Anda lagi beruntung'>
+    </div>
+    <br>
+    <div class='container-height'>
+        <i class="far fa-hand-paper"></i>&nbsp;&nbsp;
+        <p>Lakukan 5 Hal. untuk Cegah Corona</p>
+    </div>
+
+
+
+
+</body>
+<script>
+    const searchGoogle = () =>{
+        let searchG = document.getElementById("searchGoogle").value
+        window.location.href= `https://www.google.com/search?safe=strict&client=firefox-b-e&bih=758&biw=1600&hl=id&sxsrf=ALeKk02aa402lyXmBJcYsSyan5qADQ_fbw%3A1585806834508&source=hp&ei=8n2FXsf7HNPbrQGgyKToBg&q=${searchG}&oq=${searchG}&gs_lcp=CgZwc3ktYWIQAzICCAAyAggAMgIIADICCAAyAggAMgIIADICCAAyAggAMgIIADICCAA6BwgjEOoCECc6BAgjECc6BQgAEIMBOgQIABBDOgcIABCDARBDUJ8PWNUSYP4TaANwAHgAgAFxiAH8A5IBAzIuM5gBAKABAaoBB2d3cy13aXqwAQo&sclient=psy-ab&ved=0ahUKEwjHvLTohsnoAhXTbSsKHSAkCW0Q4dUDCAU&uact=5`
+    }
+
+    const BeruntungGoogle = () =>{
+        window.location.href= `https://www.google.com/doodles/`
+    }
+</script>
+
+</html>
